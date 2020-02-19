@@ -1,0 +1,9 @@
+PATCH http://localhost:3000/posts/5e4be3b0a6ac572f60174940 HTTP/1.1
+content-type: application/json
+
+{
+    "title": "my altered post"
+}
+
+GET http://localhost:3000/posts HTTP/1.1
+content-type: application/json
