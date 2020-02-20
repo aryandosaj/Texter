@@ -45,7 +45,7 @@ router.get('/:postId', async (req, res) => {
         res.json({ message: err });
     }
 
-})
+});
 
 //delete a sapecific post
 router.delete('/:postId', async (req, res) => {
@@ -56,7 +56,7 @@ router.delete('/:postId', async (req, res) => {
     catch (err) {
         res.json({ message: err });
     }
-})
+});
 
 //update a post
 router.patch('/:postId', async (req, res) => {
@@ -69,5 +69,5 @@ router.patch('/:postId', async (req, res) => {
     } catch (err) {
         res.json({ message: err });
     }
-})
+});
 module.exports = router;
