@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/Users');
-
 const bcrypt = require('bcryptjs');
-
+const { createToken, checkToken } = require('../auth');
 
 //Register a user
 router.post('/register', async (req, res) => {
@@ -61,7 +60,8 @@ router.post('/login', async (req, res) => {
         const pass = await bcrypt.compare(req.body.password, user.password);
         if (!pass)
             return res.json({ message: "Invalid Password" });
-        return res.json({ message: "logged in" });
+        const token = createToken(req.body.email);
+        return res.json({ message: "logged in", token: token });
     }
     catch (err) {
         return res.json({ message: "Invalid Email" });

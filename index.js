@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 //Connect to DataBase
 require('./db_connect');
 
+
 //Import Posts route
 const postsroute = require('./routes/posts');
 

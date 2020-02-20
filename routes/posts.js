@@ -1,18 +1,34 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../models/Posts')
+const { createToken, checkToken } = require('../auth');
 
 //gets all posts
 router.get('/', async (req, res) => {
-    try {
-        const posts = await Post.find();
-        res.json(posts);
-    } catch (err) {
-        res.json({
-            message: err
+    var token = req.headers.token;
+    var retrieved_email=null;
+    console.log(token);
+    if (token) {
+        checkToken(token,function(email){
+            console.log(email);
+            if(email)
+                retrieved_email = email;
         });
     }
-
+    if(retrieved_email)
+    {
+        try {
+            const posts = await Post.find();
+            res.json(posts);
+        } catch (err) {
+            res.json({
+                message: err
+            });
+        }
+    }
+    else 
+        res.json({ message: 'Login first' });
+    
 });
 
 // submit a post
