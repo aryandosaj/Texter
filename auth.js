@@ -16,7 +16,6 @@ function checkToken(token,next) {
         
         if (!err) {
             var email = decoded['email'];
-            console.log(email);
             next(email);
         }
         else
