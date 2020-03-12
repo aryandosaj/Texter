@@ -5,7 +5,7 @@ REST API written in NodeJs.
 
 Make sure you have [NodeJs](https://nodejs.org/en/download/) installed.
 
-Use the foolwing commands in the main directory to start the server.
+Use the following commands in the main directory to start the server.
 ```bash
 npm start
 ```
